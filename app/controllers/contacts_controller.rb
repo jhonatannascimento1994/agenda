@@ -1,17 +1,14 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_options_for_select, only: [:new, :edit, :update, :create]
+  #http_basic_authenticate_with name: 'jhonatan', password: '123', only: :destroy
+  
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
-    @a = "JHonatan"
-    
-    
+    @contacts = Contact.order(:name).page(params[:page]).per(15)
   end
   
-  
-
   # GET /contacts/1
   # GET /contacts/1.json
   def show
@@ -20,12 +17,12 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
-    options_for_select
+    @contact.build_address
   end
 
   # GET /contacts/1/edit
   def edit
-    options_for_select
+
   end
 
   # POST /contacts
@@ -35,7 +32,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to contacts_path, notice: I18n.t('messages.created') }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -49,7 +46,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to contacts_path, notice: I18n.t('messages.updated') }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit }
@@ -63,14 +60,14 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to contacts_path, notice: I18n.t('messages.destroyed') }
       format.json { head :no_content }
     end
   end
 
   private
   
-  def options_for_select
+  def set_options_for_select
     @kind_options_for_select = Kind.all
   end
 
@@ -81,6 +78,8 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name, :email, :kind_id, :rmk)
+      params.require(:contact).permit(:name, :email, :kind_id, :rmk,
+      address_attributes: [:street, :city, :state],
+      phones_attributes: [:id, :phone, :_destroy])
     end
 end

@@ -2,20 +2,20 @@
   <% if @kind.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@kind.errors.count, "error") %> prohibited this kind from being saved:</h2>
-
       <ul>
-      <% @kind.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @kind.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label t('activerecord.attributes.kind.description') %><br>
     <%= f.text_field :description %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+   <div class="actions">
+      <%= f.submit t('buttons.save'), class: "btn btn-primary" %>
   </div>
 <% end %>

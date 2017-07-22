@@ -1,8 +1,11 @@
-<h1>Seja bem-vindo a sua agenda!</h1>
-
-<ul>
-<li><%= link_to "Endereço", adresses_path  %></li>
-<li><%= link_to "Contato",contacts_path %></li>
-<li><%= link_to "kind", kinds_path %></li>
-<li><%= link_to "Telefone", phones_path %></li>
-</ul>
+<div class ='basic-grey'>
+  <h1>Seja bem-vindo a sua agenda!</h1>
+ 
+  <ul>
+    <li><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> - <%= link_to "Contatos",contacts_path %></li>
+    <li><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> - <%= link_to "Tipos", kinds_path %></li>
+    <!--<li><%#= link_to "Endereços", addresses_path  %></li>
+    <li><%#= link_to "Telefones", phones_path %></li>
+    <li><%#= link_to "Teste de Ajax",phones_path, remote: true %></li>
+  </ul>
+</div>

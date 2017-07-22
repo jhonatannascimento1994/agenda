@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170105095427) do
 
-  create_table "adresses", force: :cascade do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string   "street"
     t.string   "city"
     t.string   "state"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170105095427) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "adresses", ["contact_id"], name: "index_adresses_on_contact_id"
+  add_index "addresses", ["contact_id"], name: "index_addresses_on_contact_id"
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"

@@ -1,8 +1,18 @@
 source 'https://rubygems.org'
 
+gem 'bundler', '>= 1.8.4'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-leaflet'
+end
+gem 'rails-assets-notifyjs', source: 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+#translate kaminari paginate
+gem 'kaminari-i18n'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -13,7 +23,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+#If you're building non-Rails of non-ActiveRecord app and want the pagination feature on it, please take a look at Other Framework/Library Support section.
+gem 'kaminari'
+#Dynamic nested forms using jQuery made easy; works with formtastic, simple_form or default forms
+gem "cocoon"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -22,7 +35,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+#generate lerolero
+gem 'lerolero_generator'
 # Generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 1.6', '>= 1.6.6'
 # Use ActiveModel has_secure_password

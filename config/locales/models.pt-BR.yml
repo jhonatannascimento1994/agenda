@@ -1,0 +1,38 @@
+"pt-BR":
+  activerecord:
+    models:
+      contact:
+        one: 'Contato'
+        other: 'Contatos'
+      address:
+        one: 'Endereço'
+        other: 'Endereços'
+      phone:
+        one: 'Telefone'
+        other: 'Telefones'
+    attributes:
+      contact:
+        name: 'Nome'
+        email: 'Email'
+        kind: 'Tipo de contato'
+        kind_id: 'Tipo de contato'
+        rmk: 'Obs'
+      address:
+        street: 'Rua'
+        city: 'Cidade'
+        state: 'Estado'
+        contact_id: 'Contato'
+        contato: 'Contato'
+      kind:
+        description: 'Descrição'
+      phone:
+        phone: 'Telefone'
+    errors:
+      models:
+        contact:
+          attributes:
+            name:
+              blank: ' não pode ficar em branco'
+              too_short: ' é muito curto (mínimo: 3 caracteres)'
+            email:
+              blank: ' não pode ficar em branco'
